@@ -3,8 +3,10 @@ import './Product.css';
 
 const Product = (props) => {
     const {key, img, name, seller, ratings ,quantity, price} = props.product;
+
+    const addToCart = props.addToCart;
     return (
-        <div className=' border rounded-md mx-auto w-90 mt-12 relative'>
+        <div className='product border rounded-md mx-auto w-90 mt-12 relative'>
                 <img className='rounded-lg' src={img} alt="" />
                 
                 <div className='px-2'>
@@ -15,7 +17,7 @@ const Product = (props) => {
                 </div>
 
                  
-                <button className='bg-orange-200 p-3 m absolute top-auto w-full border-gray-400 border rounded-md'>Add to Cart</button>
+                <button onClick={() => addToCart(props.product)} className='bg-orange-200 p-3 absolute top-auto w-full border-gray-400 border rounded-md'>Add to Cart</button>
 
                               
         </div>
