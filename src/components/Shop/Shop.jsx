@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Product from '../Product/Product';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -9,10 +10,16 @@ const Shop = () => {
         .then(data => setProducts(data));
     }, [])
     return (
-        <div className='container mx-auto grid grid-cols-4 justify-between gap-5'>
+        <div className='container mx-auto grid grid-cols-4 gap-5'>
             <div className='col-span-3'>
-                <h3 className='font-extrabold text-xl'>Product coming here: {products.length}</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore. Quidem corrupti laudantium quisquam nobis a. Voluptatum consequatur neque doloribus!</p>
+                <div className='grid grid-cols-3 gap-4'>
+                    {
+                        products.map(product => <Product 
+                            product={product}
+                        ></Product>)
+                    }
+                </div>
+                
             </div>
             <div className=''>
                 <h3>Order summery</h3>
