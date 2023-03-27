@@ -10,9 +10,9 @@ const Shop = () => {
         .then(data => setProducts(data));
     }, [])
     return (
-        <div className='container mx-auto grid grid-cols-4 gap-5'>
-            <div className='col-span-3'>
-                <div className='grid grid-cols-3 gap-4'>
+        <div className='container mx-auto grid grid-cols-5 gap-5'>
+            <div className='col-span-4'>
+                <div className='grid grid-cols-3 gap-4 ml-30 mt-10'>
                     {
                         products.map(product => <Product 
                             product={product}
