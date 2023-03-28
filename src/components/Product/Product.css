@@ -1,3 +1,15 @@
+
+.product{
+    width: 420px;
+    height: 580px;
+    /* position: relative; */
+}
 .product img{
     padding: 5px;
+    height: 350px;
+    width: 100%;
 }
+/* .btn-cart{
+    position: absolute;
+    bottom: 0;
+} */
