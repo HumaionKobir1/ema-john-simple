@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 const Home = () => {
     return (
         <div>
-            <Header></Header>
+            <Header> 3x4567</Header>
             <Outlet></Outlet>
         </div>
     );
