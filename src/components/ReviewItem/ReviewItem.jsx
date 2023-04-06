@@ -13,7 +13,6 @@ const ReviewItem = ({product, handleRemoveFromCart}) => {
                     <p className='font-normal'>Order Quantity: <span className='text-yellow-400'>{quantity}</span></p>
                 </div>
             </div>
-            <button onClick={()=>handleRemoveFromCart(id)} className='rounded-full mr-5 bg-red-200 hover:bg-red-100 active:border-t-cyan-300 p-2 w-14 h-14'><TrashIcon className="h-10 w-10 text-red-500" /></button>
         </div>
     );
 };
