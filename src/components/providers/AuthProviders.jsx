@@ -10,7 +10,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
-    
+    const [loading, setLoading] = useState(true);
 
     // Sign up / Register
     const createUser = (email, password) => {
@@ -34,14 +34,26 @@ const AuthProvider = ({children}) => {
 
 
 
-    
+    // Observe auth state change
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, createUser  => {
+            console.log('auth state change',  createUser);
+            setUser(createUser);
+            setLoading(false);
+        })
+
+        return () => {
+            unsubscribe();
+        }
+    }, [])
 
     const authInfo = {
         user,
         createUser,
         signIn,
         logOut,
-        signInWithGoogle
+        signInWithGoogle,
+        loading
     }
 
     return (
