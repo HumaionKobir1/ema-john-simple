@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import google from '../../../images/google.png'
+
 
 const Register = () => {
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleShowPassword = event => {
+        setShowPassword(event.target.checked);
+    }
+
+
     return (
         <div className='bg-fuchsia-600 p-5 rounded-lg mt-8 grid justify-center md:w-2/4 mx-auto'>
 
@@ -26,10 +35,10 @@ const Register = () => {
                     <label htmlFor="password" className="block text-gray-700 font-bold mb-2">Password</label>
                     <input className='mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                    disabled:bg-slate-50' type='password' name='password' id='password' placeholder='Your password' required/>
+                    disabled:bg-slate-50' type={showPassword ? 'text' : 'password'} name='password' id='password' placeholder='Your password' required/>
                 </div>
                 <div className='flex gap-1 justify-start'>
-                    <input  type="checkbox" id="show-password" />
+                    <input onClick={handleShowPassword}  type="checkbox" id="show-password" />
                     <label htmlFor="show-password">Show Password</label>
                 </div>
                 
@@ -54,7 +63,7 @@ const Register = () => {
                             <button className="mt-3 text-lg font-semibold
             bg-gray-800 w-full text-white rounded-lg
             px-6 py-3 block shadow-xl hover:text-white hover:bg-black" type="submit" value="Register">
-                                Register
+                                Sing Up
                             </button>
             </form>
             <div className='mt-4 text-center'>

@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import google from '../../../images/google.png'
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleShowPassword = event => {
+        setShowPassword(event.target.checked);
+    }
+
     return (
         <div className='mx-auto md:w-2/4 bg-white rounded-lg shadow-md p-8 mt-10'>
             <h1 className='text-2xl font-semibold text-center'>Please Login</h1>
@@ -12,11 +19,11 @@ const Login = () => {
                 </div>
                 <div className="mb-2">
                     <label htmlFor="password" className="block text-gray-700 font-bold mb-2">Password</label>
-                    <input type='password' name='password' id="password" placeholder="Enter your password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required/>
+                    <input type={showPassword ? 'text' : 'password'} name='password' id="password" placeholder="Enter your password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required/>
                 </div>
 
                 <div className='flex gap-1 justify-start'>
-                    <input  type="checkbox" id="show-password" />
+                    <input onClick={handleShowPassword}  type="checkbox" id="show-password" />
                     <label htmlFor="show-password">Show Password</label>
                 </div>
 
@@ -34,11 +41,12 @@ const Login = () => {
                 </div>
             </form>
             <div className='mt-4 text-center'>
-                <p>New to this website? Please <Link to='/register' className='text-blue-500 hover:text-blue-800'>Register</Link></p>
+                <p>New to Ema-john? Please <Link to='/register' className='text-blue-500 hover:text-blue-800'>Create New Account</Link></p>
             </div>
 
-            <div className='grid text-center w-52 mx-auto mt-3 mb-3'>
-                <button className='btn btn-primary' >Sign in with Google</button>
+            <div className=' text-center w-2/6 mx-auto mt-3 mb-3 border-2 py-2 px-4 flex gap-1 justify-center items-center'>
+                <img className='w-6 h-6' src={google} alt="" />
+                <button className='btn btn-primary' >  Continue with Google</button>
             </div>
 
         </div>

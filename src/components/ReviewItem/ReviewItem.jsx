@@ -1,5 +1,7 @@
 import React from 'react';
 import { TrashIcon } from '@heroicons/react/24/solid'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ReviewItem = ({product, handleRemoveFromCart}) => {
     const {img, id, name, price, quantity} = product;
@@ -14,7 +16,7 @@ const ReviewItem = ({product, handleRemoveFromCart}) => {
                 </div>
             </div>
             <div>
-                <button onClick={()=>handleRemoveFromCart(id)} className=''>remove</button>
+                <button onClick={()=>handleRemoveFromCart(id)} className='border p-2 rounded-lg hover:bg-slate-300'><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon> Remove</button>
             </div>
         </div>
     );
