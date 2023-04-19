@@ -44,7 +44,7 @@ const Login = () => {
                 <p>New to Ema-john? Please <Link to='/register' className='text-blue-500 hover:text-blue-800'>Create New Account</Link></p>
             </div>
 
-            <div className=' text-center w-2/6 mx-auto mt-3 mb-3 border-2 py-2 px-4 flex gap-1 justify-center items-center'>
+            <div className=' text-center w-[42%] mx-auto mt-5 mb-3 border-2 py-2 px-4 flex gap-1 justify-center items-center'>
                 <img className='w-6 h-6' src={google} alt="" />
                 <button className='btn btn-primary' >  Continue with Google</button>
             </div>
