@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import google from '../../../images/google.png'
 import { AuthContext } from '../providers/AuthProviders';
+import { Result } from 'postcss';
 
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState()
-
-    const {user} = useContext(AuthContext);
+    const {createUser} = useContext(AuthContext);
     
 
     const handleShowPassword = event => {
@@ -26,6 +26,7 @@ const Register = () => {
         const confirm = form.confirm.value;
         console.log(name, email, password, confirm);
 
+        setError('');
         if(password !== confirm){
             setError('Your password did not match');
             return;
@@ -34,6 +35,15 @@ const Register = () => {
             setError('Password must be 6 characters or longer');
             return;
         }
+
+        createUser(email, password)
+        .then(result => {
+            const logged = result.user;
+            console.log(logged);
+        })
+        .catch(error => {
+            setError((error.message).slice(10, 50));
+        })
     }
 
 
@@ -79,7 +89,7 @@ const Register = () => {
 
                 <div className='text-center mt-4 mb-4'>
                     <p className='text-lg font-medium text-red-900'>{error}</p>
-                    <p className='text-lg font-medium text-green-800'>{user && <span>Humaion Kobir</span>}</p>
+                    <p className='text-lg font-medium text-green-800'></p>
                 </div>
 
                 <div className="flex justify-start -mt-5">

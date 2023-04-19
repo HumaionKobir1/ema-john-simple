@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import logo from '../../../images/Logo.svg';
 import { Link, NavLink } from 'react-router-dom'
 import {
@@ -6,9 +6,19 @@ import {
   Bars3BottomRightIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid'
+import { AuthContext } from '../providers/AuthProviders';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const {user, logOut} = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+        .then(() => {})
+        .catch(error => console.log(error.message))
+    }
+
   return (
     <div className='bg-slate-900 text-white'>
         <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8'>
@@ -44,13 +54,23 @@ const Header = () => {
                     Manage Inventory
                     </NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <NavLink
                     to='/login'
                     className={({ isActive }) => (isActive ? 'active' : 'default')}
                     >
                     Login
                     </NavLink>
+                </li> */}
+                <li>
+                    {
+                        user ? 
+                            <div className=' ml-2'>
+                                <span>{user.email}</span>
+                                <button onClick={handleLogOut} className='btn btn-xs ml-2'>Sign out</button>
+                                </div>
+                            : <Link className='ml-5 btn btn-xs' to="/login">Login</Link>
+                    }
                 </li>
                 </ul>
 
