@@ -37,7 +37,7 @@ const Orders = () => {
                 cart={cart}
                 handleClearCart={handleClearCart}
                 >
-                    <Link>
+                    <Link to='/checkout'>
                         <button className='text-xl font-medium bg-yellow-500 text-white w-full p-3 rounded-lg'>Proceed Checkout <FontAwesomeIcon icon={faArrowRight}/></button> 
                     </Link>
                 </Cart>
